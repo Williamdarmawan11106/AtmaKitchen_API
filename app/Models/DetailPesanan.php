@@ -14,7 +14,7 @@ class DetailPesanan extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $fillable = ['ID_Detail_Pesanan', 'Jumlah', 'Harga', 'ID_Hampers', 'ID_Produk'];
+    protected $fillable = ['ID_Detail_Pesanan', 'Jumlah', 'Harga', 'ID_Hampers', 'ID_Produk', 'ID_Pemesanan'];
 
     public function hampers()
     {
@@ -23,6 +23,11 @@ class DetailPesanan extends Model
 
     public function produk()
     {
-        return $this->hasMany(Produk::class, 'ID_Produk');
+        return $this->belongsTo(Produk::class, 'ID_Produk');
+    }
+
+    public function pemesanan()
+    {
+        return $this->belongsTo(Pemesanan::class, 'ID_Pemesanan');
     }
 }

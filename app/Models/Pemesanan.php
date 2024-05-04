@@ -14,7 +14,7 @@ class Pemesanan extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $fillable = ['ID_Pemesanan', 'Jumlah_Pesanan', 'Harga_Pesanan', 'Tanggal_Pesanan', 'Tanggal_Diambil', 'Tanggal_Pembayaran', 'Bukti_Pembayaran', 'Status_Pemesanan', 'Akumulasi_PromoPoin', 'ID_Customer', 'ID_Alamat', 'ID_PromoPoin', 'ID_Detail_Pesanan', 'Pengiriman', 'Tip'];
+    protected $fillable = ['ID_Pemesanan', 'Jumlah_Pesanan', 'Harga_Pesanan', 'Tanggal_Pesanan', 'Tanggal_Diambil', 'Tanggal_Pembayaran', 'Bukti_Pembayaran', 'Status_Pemesanan', 'Akumulasi_PromoPoin', 'ID_Customer', 'ID_Alamat', 'ID_PromoPoin', 'Pengiriman', 'Tip'];
 
     public function customer()
     {
@@ -29,10 +29,5 @@ class Pemesanan extends Model
     public function promopoin()
     {
         return $this->belongsTo(PromoPoin::class, 'ID_PromoPoin');
-    }
-
-    public function detailpesanan()
-    {
-        return $this->belongsTo(DetailPesanan::class, 'ID_Detail_Pesanan');
     }
 }
