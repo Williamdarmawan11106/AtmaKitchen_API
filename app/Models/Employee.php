@@ -14,7 +14,7 @@ class Employee extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $fillable = ['ID_Employee', 'Nama_Employee', 'Nomor_Telepon', 'Gaji', 'Bonus', 'ID_Jabatan'];
+    protected $fillable = ['ID_Employee', 'Nama_Employee', 'Nomor_Telepon', 'Gaji', 'Bonus','Password', 'ID_Jabatan'];
 
     public function position()
     {

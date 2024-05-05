@@ -15,7 +15,6 @@ Route::post('/loginEmp', [AuthController::class, 'loginEmployee']);
 Route::apiResource('customer', CustomerController::class);
 Route::apiResource('presensi', PresensiController::class);
 Route::apiResource('detailPesanan', DetailPesananController::class);
-// Route::get('detailPesanan/searchByNamaProduk/{namaProduk}', [DetailPesananController::class, 'searchByNamaProduk'])->name('detailPesanan.searchByNamaProduk');
 
-Route::get('/detailPesanan/search/{nama}', [DetailPesananController::class, 'searchByNamaProduk']);
-Route::get('/detailPesanan', [DetailPesananController::class, 'getAllDetailPesanan']);
+Route::get('/detailPesanan/search/{id}/{nama}', [DetailPesananController::class, 'searchByNamaProduk']);
+Route::get('/history/{id}', [DetailPesananController::class, 'gethistory']);
