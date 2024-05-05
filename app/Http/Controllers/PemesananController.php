@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pemesanan;
+use App\Models\Produk;
+use App\Models\DetailPesanan;
 
 
 class PemesananController extends Controller
@@ -108,6 +110,30 @@ class PemesananController extends Controller
             ], 200);
         }
         catch(\Exception $e){
+            return response()->json([
+                "status" => false,
+                "message" => $e->getMessage(),
+                "data" => []
+            ], 400);
+        }
+    }
+
+    public function searchByNamaProduk($nama)
+    {
+        try {
+            $data = Produk::join('detail_pesanan', 'produk.ID_Produk', '=', 'detail_pesanan.ID_Produk')
+                            ->join('pemesanan', 'detail_pesanan.ID_Detail_Pesanan', '=', 'pemesanan.ID_Detail_Pesanan')
+                            ->where('produk.Nama_Produk', '=', $nama)
+                            ->select('produk.ID_Produk', 'detail_pesanan.Jumlah', 'pemesanan.Harga_Pesanan', 'pemesanan.Tanggal_Pesanan')
+                            ->get();
+
+            return response()->json([
+                "status" => true,
+                "message" => 'Berhasil mengambil data produk',
+                "data" => $data
+            ], 200);
+            
+        } catch (\Exception $e) {
             return response()->json([
                 "status" => false,
                 "message" => $e->getMessage(),
