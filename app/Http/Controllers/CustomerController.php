@@ -115,4 +115,26 @@ class CustomerController extends Controller
             ], 400);
         }
     }
+
+    public function searchByName($nama)
+    {
+        try{
+            $customer = Customer::where('Nama_Customer', $nama)->first();
+
+            if(!$customer) throw new \Exception("Data Customer tidak ditemukan");
+
+            return response()->json([
+                "status" => true,
+                "message" => 'Berhasil ambil data customer',
+                "data" => $customer
+            ], 200);
+        }
+        catch(\Exception $e){
+            return response()->json([
+                "status" => false,
+                "message" => $e->getMessage(),
+                "data" => []
+            ], 400);
+        }
+    }
 }
