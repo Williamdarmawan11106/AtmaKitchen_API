@@ -9,12 +9,12 @@ class Employee extends Model
 {
     use HasFactory;
 
-    protected $table = 'employee';
-    protected $primaryKey = 'ID_Employee';
-    public $incrementing = false;
+    protected $table = 'employees';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $fillable = ['ID_Employee', 'Nama_Employee', 'Nomor_Telepon', 'Gaji', 'Bonus','Password', 'ID_Jabatan'];
+    protected $fillable = ['nama_employee', 'nomor_telepon', 'Gaji', 'Bonus','Password', 'ID_Jabatan'];
 
     public function position()
     {

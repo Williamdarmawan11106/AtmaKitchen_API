@@ -9,16 +9,16 @@ class Alamat extends Model
 {
     use HasFactory;
 
-    protected $table = 'alamat';
-    protected $primaryKey = 'ID_Alamat';
+    protected $table = 'alamats';
+    protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $fillable = ['ID_Alamat', 'Nama_Alamat', 'Kode_Pos', 'Jarak_Pengiriman', 'ID_Customer'];
+    protected $fillable = ['alamat', 'nama_penerima', 'no_telpon', 'catatan', 'id_customer'];
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class, 'ID_Customer');
+        return $this->belongsTo(Customer::class, 'id_customer');
     }
 
 }

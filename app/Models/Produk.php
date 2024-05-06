@@ -9,39 +9,32 @@ class Produk extends Model
 {
     use HasFactory;
 
-    protected $table = 'produk';
-    protected $primaryKey = 'ID_Produk';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $table = 'produks';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    protected $keyType = 'int';
     public $timestamps = false;
     protected $fillable = [
-        'ID_Produk',
-        'Nama_Produk',
-        'Stok_Produk',
-        'Harga_Produk',
-        'Gambar_Produk',
-        'Deskripsi_Produk',
-        'Status_Produk',
-        'Kategori_Produk',
-        'Ukuran_Produk',
-        'Kuota_Produk',
-        'ID_Packaging',
-        'ID_Penitip',
-        'ID_Hampers',
+        'nama_produk',
+        'stok',
+        'kuota',
+        'harga',
+        'kategori',
+        'ukuran',
+        'packaging',
+        'deskripsi',
+        'gambar_produk',
+        'id_penitip',
+        'id_hampers',
     ];
-
-    public function packaging()
-    {
-        return $this->belongsTo(Packaging::class, 'ID_Packaging');
-    }
 
     public function penitip()
     {
-        return $this->belongsTo(Penitip::class, 'ID_Penitip');
+        return $this->belongsTo(Penitip::class, 'id');
     }
 
     public function hampers()
     {
-        return $this->belongsTo(Hampers::class, 'ID_Hampers');
+        return $this->belongsTo(Hampers::class, 'id');
     }
 }

@@ -20,8 +20,11 @@ Route::put('/customers/{id}/updatePassword', [PasswordResetController::class, 'u
 Route::get('/updateBerhasil', [PasswordResetController::class, 'indexBerhasil'])->name('updateBerhasil');
 
 Route::apiResource('customer', CustomerController::class);
-Route::apiResource('presensi', PresensiController::class);
 Route::apiResource('detailPesanan', DetailPesananController::class);
 
 Route::get('/detailPesanan/search/{id}/{nama}', [DetailPesananController::class, 'searchByNamaProduk']);
 Route::get('/history/{id}', [DetailPesananController::class, 'gethistory']);
+
+Route::get('/presensi', [PresensiController::class, 'showAllPresensi']);
+Route::get('/presensi/{namaKaryawan}', [PresensiController::class, 'searchPresensiByNamaEmployee']);
+Route::put('/presensi/{idPresensi}', [PresensiController::class, 'updatePresensi']);
