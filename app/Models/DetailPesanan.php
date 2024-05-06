@@ -9,25 +9,25 @@ class DetailPesanan extends Model
 {
     use HasFactory;
 
-    protected $table = 'detail_pesanan';
-    protected $primaryKey = 'ID_Detail_Pesanan';
-    public $incrementing = false;
+    protected $table = 'detail_pemesanans';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $fillable = ['ID_Detail_Pesanan', 'Jumlah', 'Harga', 'ID_Hampers', 'ID_Produk', 'ID_Pemesanan'];
+    protected $fillable = ['jumlah', 'harga', 'id_produk', 'id_hampers', 'id_pemesanan'];
 
     public function hampers()
     {
-        return $this->belongsTo(Hampers::class, 'ID_Hampers');
+        return $this->belongsTo(Hampers::class, 'id_hampers');
     }
 
     public function produk()
     {
-        return $this->belongsTo(Produk::class, 'ID_Produk');
+        return $this->belongsTo(Produk::class, 'id_produk');
     }
 
     public function pemesanan()
     {
-        return $this->belongsTo(Pemesanan::class, 'ID_Pemesanan');
+        return $this->belongsTo(Pemesanan::class, 'id_pemesanan');
     }
 }

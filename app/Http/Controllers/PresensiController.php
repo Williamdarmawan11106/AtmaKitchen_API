@@ -7,31 +7,12 @@ use App\Models\Presensi;
 
 class PresensiController extends Controller
 {
-    public function index()
+    public function showAllPresensi()
     {
         try{
-            $presensi = Presensi::all();
-            return response()->json([
-                "status" => true,
-                "message" => 'Berhasil ambil data Presensi',
-                "data" => $presensi
-            ], 200);
-        }
-        catch(\Exception $e){
-            return response()->json([
-                "status" => false,
-                "message" => $e->getMessage(),
-                "data" => []
-            ], 400);
-        }
-    }
-
-    public function show($id)
-    {
-        try{
-            $presensi = Presensi::find($id);
-
-            if(!$presensi) throw new \Exception("Data Presensi tidak ditemukan");
+            $presensi = Presensi::join('employees', 'presensi.id_employee', '=', 'employees.id')
+            ->select('presensi.id','employees.nama_employee', 'presensi.tanggal_kehadiran', 'presensi.status_kehadiran')
+            ->get();
 
             return response()->json([
                 "status" => true,
@@ -48,17 +29,19 @@ class PresensiController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function searchPresensiByNamaEmployee($namaKaryawan)
     {
         try{
-            $request->validate([
-                'ID_Employee' => 'required|exists:employee,ID_Employee',
-            ]);
+            $presensi = Presensi::join('employees', 'presensi.id_employee', '=', 'employees.id')
+            ->where('employees.nama_employee', '=', $namaKaryawan)
+            ->select('presensi.id','employees.nama_employee', 'presensi.tanggal_kehadiran', 'presensi.status_kehadiran')
+            ->get();
 
-            $presensi = Presensi::create($request->all());
+            if(!$presensi) throw new \Exception("Data Presensi Karyawan tidak ditemukan");
+
             return response()->json([
                 "status" => true,
-                "message" => 'Berhasil menambah Presensi',
+                "message" => 'Berhasil ambil data Presensi',
                 "data" => $presensi
             ], 200);
         }
@@ -71,7 +54,7 @@ class PresensiController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function updatePresensi(Request $request, $id)
     {
         try{
             $presensi = Presensi::find($id);
@@ -83,30 +66,6 @@ class PresensiController extends Controller
             return response()->json([
                 "status" => true,
                 "message" => 'Berhasil mengubah data Presensi',
-                "data" => $presensi
-            ], 200);
-        }
-        catch(\Exception $e){
-            return response()->json([
-                "status" => false,
-                "message" => $e->getMessage(),
-                "data" => []
-            ], 400);
-        }
-    }
-
-    public function destroy($id)
-    {
-        try{
-            $presensi = Presensi::find($id);
-
-            if(!$presensi) throw new \Exception("Data Presensi tidak ditemukan");
-
-            $presensi->delete();
-
-            return response()->json([
-                "status" => true,
-                "message" => 'Berhasil menghapus data Presensi',
                 "data" => $presensi
             ], 200);
         }
