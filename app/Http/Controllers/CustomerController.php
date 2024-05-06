@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Customer;
-
+use App\Models\User;
 
 class CustomerController extends Controller
 {
@@ -30,7 +31,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         try{
-            $customer = Customer::find($id);
+            $customer = User::where('id', '=', $id)->select('id', 'username', 'email', 'password', 'tanggal_lahir', 'promo_poin', 'saldo', 'image', 'role', 'active')->first();
 
             if(!$customer) throw new \Exception("Data Customer tidak ditemukan");
 
@@ -116,10 +117,10 @@ class CustomerController extends Controller
         }
     }
 
-    public function searchByName($nama)
+    public function searchByEmail($email)
     {
         try{
-            $customer = Customer::where('Nama_Customer', $nama)->first();
+            $customer = User::where('email', '=', $email)->select('id', 'username', 'email', 'password', 'tanggal_lahir', 'promo_poin', 'saldo', 'image', 'role', 'active')->first();
 
             if(!$customer) throw new \Exception("Data Customer tidak ditemukan");
 
