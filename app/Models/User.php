@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class User extends Model
 {
     use HasFactory;
 
@@ -14,5 +14,5 @@ class Customer extends Model
     public $incrementing = true;
     protected $keyType = 'int';
     public $timestamps = false;
-    protected $fillable = ['username', 'Tanggal_Lahir', 'email', 'password', 'promo_Poin', 'saldo', 'image', 'role'];
+    protected $fillable = ['username', 'email', 'password', 'tanggal_lahir', 'promo_Poin', 'saldo', 'image', 'role', 'active'];
 }

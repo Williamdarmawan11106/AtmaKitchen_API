@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #fafbfe;
+    padding: 0 !important;
+}
+
+.main nav {
+    margin-left: 5px;
+    border-radius: 0 0 0 10px;
+}
+
+#sidebar {
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.expand {
+    width: 220px;
+    min-width: 220px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 15px 20px 10px 20px;
+    margin-top: 8px;
+}
+
+.logo-exp {
+    padding-top: 20px;
+    padding-left: 17px;
+}
+
+.logo-exp img {
+    width: 40px;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo {
+    padding-left: 8px;
+}
+
+.sidebar-logo img {
+    width: 60px;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #000;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #51361A;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #FFF;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.title-size a {
+    font-size: 20px;
+}
+
+.title-size {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+/* Card Table */
+.card {
+    margin: 10px 25px;
+    border: none;
+    padding: 20px;
+}
+
+div.dt-container .dt-paging .dt-paging-button.current,
+div.dt-container .dt-paging .dt-paging-button.current:hover {
+    background: none !important;
+    border-radius: 5px;
+}
+
+td {
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+}
+
+.btn-pls-print {
+    background: none;
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.btn-pls-print a {
+    background: #875b2d;
+    color: #FFF;
+    padding: 8px 8px 5px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+div.dt-container .dt-paging .dt-paging-button:hover {
+    background: #51361A !important;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.user-image {
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.dropdown-toggle::after {
+    color: black;
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-item:not(:last-child) {
+    margin-right: 50px;
+}
+
+.bg-body-tertiary {
+    padding: 0 !important;
+}
+
+.container-fluid {
+    margin: 0 25px;
+}
+
+.btn-profil {
+    background: #875b2d;
+    color: #FFF;
+    padding: 10px 141px;
+}
+
+.btn-alamat {
+    background: #875b2d;
+    color: #FFF;
+    padding: 10px 125px;
+}
+
+.btn-pls-alamat {
+    background: none;
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.btn-pls-alamat a {
+    background: #875b2d;
+    color: #FFF;
+    padding: 8px 8px 5px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.btn-lebih {
+    background: #875b2d;
+    color: #FFF;
+    margin-right: 20px;
+    margin-top: 20px;
+}

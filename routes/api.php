@@ -10,11 +10,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordResetController;
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/loginCus', [AuthController::class, 'loginCustomer']);
-Route::post('/loginEmp', [AuthController::class, 'loginEmployee']);
 
 Route::get('/search/{nama}', [PemesananController::class, 'searchByNamaProduk']);
-Route::get('/searchCustomer/{nama}', [CustomerController::class, 'searchByName']);
+Route::get('/searchCustomer/{email}', [CustomerController::class, 'searchByEmail']);
 
 Route::get('/sendEmailLink/{nama}', [PasswordResetController::class, 'sendResetLink']);
 Route::get('/resetPassword/{id}/{verify_key}', [PasswordResetController::class, 'show']);
