@@ -9,25 +9,25 @@ class Pemesanan extends Model
 {
     use HasFactory;
 
-    protected $table = 'pemesanan';
-    protected $primaryKey = 'ID_Pemesanan';
-    public $incrementing = false;
+    protected $table = 'pemesanans';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $fillable = ['ID_Pemesanan', 'Jumlah_Pesanan', 'Harga_Pesanan', 'Tanggal_Pesanan', 'Tanggal_Diambil', 'Tanggal_Pembayaran', 'Bukti_Pembayaran', 'Status_Pemesanan', 'Akumulasi_PromoPoin', 'ID_Customer', 'ID_Alamat', 'ID_PromoPoin', 'Pengiriman', 'Tip'];
+    protected $fillable = ['no_nota', 'jumlah_pesanan', 'harga_pesanan', 'tanggal_pesanan', 'tanggal_diambil', 'tanggal_pembayaran', 'bukti_pembayaran', 'status_pesanan', 'tip', 'delivery', 'id_promo', 'id_customer', 'id_alamat'];
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class, 'ID_Customer');
+        return $this->belongsTo(Users::class, 'id');
     }
 
     public function alamat()
     {
-        return $this->belongsTo(Alamat::class, 'ID_Alamat');
+        return $this->belongsTo(Alamat::class, 'id');
     }
 
     public function promopoin()
     {
-        return $this->belongsTo(PromoPoin::class, 'ID_PromoPoin');
+        return $this->belongsTo(PromoPoin::class, 'id');
     }
 }

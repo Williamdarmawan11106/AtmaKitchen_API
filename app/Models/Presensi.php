@@ -10,19 +10,14 @@ class Presensi extends Model
     use HasFactory;
 
     protected $table = 'presensi';
-    protected $primaryKey = 'ID_Presensi';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    protected $keyType = 'int';
     public $timestamps = false;
-    protected $fillable = ['ID_Presensi', 'Tanggal_Kehadiran', 'Status_Kehadiran', 'ID_Employee'];
+    protected $fillable = ['tanggal_kehadiran', 'status_kehadiran', 'id_employee'];
 
     public function employee()
     {
-        return $this->belongsTo(Employee::class, 'ID_Employee');
-    }
-
-    public function presensis()
-    {
-        return $this->hasMany(Employee::class, 'ID_Presensi');
+        return $this->belongsTo(Employee::class, 'id_employee');
     }
 }

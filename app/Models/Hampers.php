@@ -10,14 +10,9 @@ class Hampers extends Model
     use HasFactory;
 
     protected $table = 'hampers';
-    protected $primaryKey = 'ID_Hampers';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    protected $keyType = 'int';
     public $timestamps = false;
-    protected $fillable = ['ID_Hampers', 'Nama_Hampers', 'Harga_Hampers', 'Deskripsi_Hampers', 'ID_Packaging'];
-
-    public function packaging()
-    {
-        return $this->belongsTo(Packaging::class, 'ID_Packaging');
-    }
+    protected $fillable = ['nama_hampers', 'harga_hampers', 'packaging_hampers'];
 }

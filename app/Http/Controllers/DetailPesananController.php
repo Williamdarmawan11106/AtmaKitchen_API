@@ -13,17 +13,17 @@ class DetailPesananController extends Controller
     public function searchByNamaProduk($id, $nama)
     {
         try {
-            $data = DetailPesanan::join('produk', 'produk.ID_Produk', '=', 'detail_pesanan.ID_Produk')
-                     ->join('pemesanan', 'pemesanan.ID_Pemesanan', '=', 'detail_pesanan.ID_Pemesanan')
-                     ->where('pemesanan.ID_Customer', '=', $id)
-                     ->where('produk.Nama_Produk', '=', $nama)
-                     ->select('produk.Nama_Produk', 'detail_pesanan.Jumlah', 'detail_pesanan.Harga', 'pemesanan.Tanggal_Pesanan')
+            $data = DetailPesanan::join('produks', 'produks.id', '=', 'detail_pemesanans.id_produk')
+                     ->join('pemesanans', 'pemesanans.id', '=', 'detail_pemesanans.id_pemesanan')
+                     ->where('pemesanans.id_customer', '=', $id)
+                     ->where('produks.nama_produk', '=', $nama)
+                     ->select('pemesanans.id','produks.nama_produk', 'detail_pemesanans.jumlah', 'detail_pemesanans.harga', 'pemesanans.tanggal_diambil')
                      ->get();
 
  
             return response()->json([
                 "status" => true,
-                "message" => 'Berhasil mengambil data produk',
+                "message" => 'Berhasil mengambil history by data produk',
                 "data" => $data
             ], 200);
            
@@ -39,16 +39,16 @@ class DetailPesananController extends Controller
     public function gethistory($id)
     {
         try {
-            $data = Pemesanan::join('detail_pesanan', 'detail_pesanan.ID_Pemesanan', '=', 'pemesanan.ID_Pemesanan')
-                     ->join('produk', 'produk.ID_Produk', '=', 'detail_pesanan.ID_Produk')
-                     ->where('pemesanan.ID_Customer', '=', $id)
-                     ->select('produk.Nama_Produk', 'detail_pesanan.Jumlah', 'detail_pesanan.Harga', 'pemesanan.Tanggal_Pesanan')
+            $data = Pemesanan::join('detail_pemesanans', 'detail_pemesanans.id_pemesanan', '=', 'pemesanans.id')
+                     ->join('produks', 'produks.id', '=', 'detail_pemesanans.id_produk')
+                     ->where('pemesanans.id_customer', '=', $id)
+                     ->select('pemesanans.id', 'produks.nama_produk', 'detail_pemesanans.jumlah', 'detail_pemesanans.harga', 'pemesanans.tanggal_diambil')
                      ->get();
 
  
             return response()->json([
                 "status" => true,
-                "message" => 'Berhasil mengambil data produk',
+                "message" => 'Berhasil mengambil data history produk',
                 "data" => $data
             ], 200);
            
