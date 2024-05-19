@@ -8,6 +8,10 @@ use App\Http\Controllers\DetailPesananController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdukDashboardController;
+use Illuminate\Support\Facades\Artisan;
+
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -28,3 +32,7 @@ Route::get('/history/{id}', [DetailPesananController::class, 'gethistory']);
 Route::get('/presensi', [PresensiController::class, 'showAllPresensi']);
 Route::get('/presensi/{namaKaryawan}', [PresensiController::class, 'searchPresensiByNamaEmployee']);
 Route::put('/presensi/{idPresensi}', [PresensiController::class, 'updatePresensi']);
+Route::post('/presensi/generate-presensi', [PresensiController::class, 'generatePresensi']);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/produkdashboard', [ProdukDashboardController::class, 'index']);

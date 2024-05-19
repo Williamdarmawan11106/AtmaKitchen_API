@@ -2,6 +2,10 @@
 
 return [
 
+    'console' => [
+        'kernel' => App\Console\Kernel::class,
+      ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -39,7 +43,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------

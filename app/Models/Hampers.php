@@ -15,4 +15,9 @@ class Hampers extends Model
     protected $keyType = 'int';
     public $timestamps = false;
     protected $fillable = ['nama_hampers', 'harga_hampers', 'packaging_hampers'];
+
+    public function detailHampers()
+    {
+        return $this->hasMany(DetailHampers::class, 'id_hampers');
+    }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Employee;
+
 
 class Presensi extends Model
 {
@@ -20,4 +22,9 @@ class Presensi extends Model
     {
         return $this->belongsTo(Employee::class, 'id_employee');
     }
+
+    protected $attributes = [
+        'status_kehadiran' => 1, 
+    ];
+
 }
