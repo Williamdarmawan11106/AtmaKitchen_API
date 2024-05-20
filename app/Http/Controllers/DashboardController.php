@@ -33,7 +33,7 @@ class DashboardController extends Controller
                 $populer[] = [
                     'nama' => $item->produk->nama_produk,
                     'harga' => $item->produk->harga,
-                    'gambar' => url('img/' . $item->produk->gambar_produk),
+                    'gambar' => url($item->produk->gambar_produk),
                     'jumlah' => $item->total,
                     'tipe' => 'Produk'
                 ];
@@ -43,7 +43,7 @@ class DashboardController extends Controller
                 $populer[] = [
                     'nama' => $item->hampers->nama_hampers,
                     'harga' => $item->hampers->harga_hampers,
-                    'gambar' => url('img/' . $item->hampers->gambar_hampers),
+                    'gambar' => url($item->hampers->gambar_hampers),
                     'jumlah' => $item->total,
                     'tipe' => 'Hampers'
                 ];
@@ -62,7 +62,7 @@ class DashboardController extends Controller
                     $populer[] = [
                         'nama' => $product->nama_produk,
                         'harga' => $product->harga,
-                        'gambar' => url('img/' . $product->gambar_produk),
+                        'gambar' => url($product->gambar_produk),
                         'jumlah' => 0,
                         'tipe' => 'Produk'
                     ];
