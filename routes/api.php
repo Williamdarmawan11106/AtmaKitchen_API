@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukDashboardController;
+use App\Http\Controllers\PenarikanSaldoController;
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -36,3 +37,7 @@ Route::post('/presensi/generate-presensi', [PresensiController::class, 'generate
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/produkdashboard', [ProdukDashboardController::class, 'index']);
+
+Route::get('/historypenarikansaldo/{id}', [PenarikanSaldoController::class, 'getAllPenarikan']);
+Route::get('/historypenarikansaldo/{id}/{tanggal}', [PenarikanSaldoController::class, 'searchHistoryPenarikanByDate']);
+Route::post('/buatpenarikansaldo', [PenarikanSaldoController::class, 'store']);
