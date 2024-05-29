@@ -11,6 +11,7 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukDashboardController;
 use App\Http\Controllers\PenarikanSaldoController;
+use App\Http\Controllers\BahanBakuController;
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -41,3 +42,5 @@ Route::get('/produkdashboard', [ProdukDashboardController::class, 'index']);
 Route::get('/penarikansaldo/{id}', [PenarikanSaldoController::class, 'getAllPenarikan']);
 Route::get('/penarikansaldo/{id}/{tanggal}', [PenarikanSaldoController::class, 'searchHistoryPenarikanByDate']);
 Route::post('/penarikansaldo/create', [PenarikanSaldoController::class, 'store']);
+
+Route::get('/bahanbaku', [BahanBakuController::class, 'index']);
