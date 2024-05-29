@@ -38,6 +38,6 @@ Route::post('/presensi/generate-presensi', [PresensiController::class, 'generate
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/produkdashboard', [ProdukDashboardController::class, 'index']);
 
-Route::get('/historypenarikansaldo/{id}', [PenarikanSaldoController::class, 'getAllPenarikan']);
-Route::get('/historypenarikansaldo/{id}/{tanggal}', [PenarikanSaldoController::class, 'searchHistoryPenarikanByDate']);
-Route::post('/buatpenarikansaldo', [PenarikanSaldoController::class, 'store']);
+Route::get('/penarikansaldo/{id}', [PenarikanSaldoController::class, 'getAllPenarikan']);
+Route::get('/penarikansaldo/{id}/{tanggal}', [PenarikanSaldoController::class, 'searchHistoryPenarikanByDate']);
+Route::post('/penarikansaldo/create', [PenarikanSaldoController::class, 'store']);

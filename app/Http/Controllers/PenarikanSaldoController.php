@@ -13,7 +13,7 @@ class PenarikanSaldoController extends Controller
             $data = PenarikanSaldo::join('users', 'users.id' , '=', 'penarikan_saldo.id_customer')
                      ->where('penarikan_saldo.id_customer', '=', $id)
                      ->whereDate('penarikan_saldo.tanggal_penarikan', '=', $tanggal)
-                     ->select('penarikan_saldo.id','penarikan_saldo.nominal_penarikan', 'penarikan_saldo.no_rekening', 'penarikan_saldo.status', 'penarikan_saldo.tanggal_penarikan', 'users.saldo')
+                     ->select('penarikan_saldo.id','penarikan_saldo.nominal_penarikan', 'penarikan_saldo.bank', 'penarikan_saldo.no_rekening', 'penarikan_saldo.status', 'penarikan_saldo.tanggal_penarikan', 'users.saldo')
                      ->get();
 
             return response()->json([
@@ -36,7 +36,7 @@ class PenarikanSaldoController extends Controller
         try {
             $data = PenarikanSaldo::join('users', 'users.id' , '=', 'penarikan_saldo.id_customer')
                      ->where('penarikan_saldo.id_customer', '=', $id)
-                     ->select('penarikan_saldo.id','penarikan_saldo.nominal_penarikan', 'penarikan_saldo.no_rekening', 'penarikan_saldo.status', 'penarikan_saldo.tanggal_penarikan', 'users.saldo')
+                     ->select('penarikan_saldo.id','penarikan_saldo.nominal_penarikan', 'penarikan_saldo.bank', 'penarikan_saldo.no_rekening', 'penarikan_saldo.status', 'penarikan_saldo.tanggal_penarikan', 'users.saldo')
                      ->get();
 
             return response()->json([
@@ -59,12 +59,14 @@ class PenarikanSaldoController extends Controller
         try {
             $request->validate([
                 'nominal_penarikan' => 'required|numeric',
+                'bank' => 'required|string',
                 'no_rekening' => 'required|string',
                 'id_customer' => 'required|exists:users,id'
             ]);
 
             $penarikanSaldo = PenarikanSaldo::create([
                 'nominal_penarikan' => $request->input('nominal_penarikan'),
+                'bank' => $request->input('bank'),
                 'no_rekening' => $request->input('no_rekening'),
                 'status' => 0, 
                 'tanggal_penarikan' => now(),
@@ -85,5 +87,4 @@ class PenarikanSaldoController extends Controller
             ], 400);
         }
     }
-
 }

@@ -14,7 +14,7 @@ class PenarikanSaldo extends Model
     public $incrementing = true;
     protected $keyType = 'string';
     public $timestamps = false;
-    protected $fillable = ['nominal_penarikan','no_rekening', 'status', 'tanggal_penarikan', 'id_customer'];
+    protected $fillable = ['nominal_penarikan', 'bank', 'no_rekening', 'status', 'tanggal_penarikan', 'id_customer'];
 
     public function customer()
     {
