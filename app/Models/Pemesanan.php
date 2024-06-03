@@ -13,7 +13,7 @@ class Pemesanan extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'string';
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = ['no_nota', 'jumlah_pesanan', 'harga_pesanan', 'tanggal_pesanan', 'tanggal_diambil', 'tanggal_pembayaran', 'bukti_pembayaran', 'status_pesanan', 'tip', 'delivery', 'id_promo', 'id_customer', 'id_alamat'];
 
     public function customer()
@@ -29,5 +29,10 @@ class Pemesanan extends Model
     public function promopoin()
     {
         return $this->belongsTo(PromoPoin::class, 'id');
+    }
+
+    public function detailPesanans()
+    {
+        return $this->hasMany(DetailPesanan::class, 'id_pemesanan');
     }
 }

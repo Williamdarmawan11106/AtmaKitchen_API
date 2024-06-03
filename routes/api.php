@@ -12,6 +12,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukDashboardController;
 use App\Http\Controllers\PenarikanSaldoController;
 use App\Http\Controllers\BahanBakuController;
+use App\Http\Controllers\PenggunaanBahanBakuController;
+use App\Http\Controllers\PemasukanPengeluaranController;
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -44,3 +46,6 @@ Route::get('/penarikansaldo/{id}/{tanggal}', [PenarikanSaldoController::class, '
 Route::post('/penarikansaldo/create', [PenarikanSaldoController::class, 'store']);
 
 Route::get('/bahanbaku', [BahanBakuController::class, 'index']);
+Route::get('/bahanbaku/penggunaan-bahan-baku/{tanggal_mulai}/{tanggal_selesai}', [PenggunaanBahanBakuController::class, 'laporanPenggunaanBahanBaku']);
+
+Route::get('/laporan-pemasukan-pengeluaran', [PemasukanPengeluaranController::class, 'laporanPemasukanPengeluaran']);

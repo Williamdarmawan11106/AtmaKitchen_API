@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Produk;
+use App\Models\Hampers;
+use App\Models\Pemesanan;
 
 class DetailPesanan extends Model
 {
@@ -13,7 +16,7 @@ class DetailPesanan extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'string';
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = ['jumlah', 'harga', 'id_produk', 'id_hampers', 'id_pemesanan'];
 
     public function hampers()

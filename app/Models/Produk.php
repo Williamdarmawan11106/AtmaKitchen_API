@@ -30,11 +30,11 @@ class Produk extends Model
 
     public function penitip()
     {
-        return $this->belongsTo(Penitip::class, 'id');
+        return $this->belongsTo(Penitip::class, 'id_penitip');
     }
 
     public function hampers()
     {
-        return $this->belongsTo(Hampers::class, 'id');
+        return $this->belongsTo(Hampers::class, 'id_hampers');
     }
 }

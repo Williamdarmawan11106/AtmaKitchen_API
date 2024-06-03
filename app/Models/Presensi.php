@@ -15,7 +15,7 @@ class Presensi extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int';
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = ['tanggal_kehadiran', 'status_kehadiran', 'id_employee'];
 
     public function employee()
