@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PenarikanSaldo;
+use App\Models\User;
 
 class PenarikanSaldoController extends Controller
 {
@@ -58,20 +59,25 @@ class PenarikanSaldoController extends Controller
     {
         try {
             $request->validate([
-                'nominal_penarikan' => 'required|numeric',
                 'bank' => 'required|string',
                 'no_rekening' => 'required|string',
                 'id_customer' => 'required|exists:users,id'
             ]);
 
+            $saldo = User::findOrFail($request->input('id_customer'))->saldo;
+
             $penarikanSaldo = PenarikanSaldo::create([
-                'nominal_penarikan' => $request->input('nominal_penarikan'),
+                'nominal_penarikan' => $saldo, 
                 'bank' => $request->input('bank'),
                 'no_rekening' => $request->input('no_rekening'),
                 'status' => 0, 
                 'tanggal_penarikan' => now(),
                 'id_customer' => $request->input('id_customer')
             ]);
+
+            $user = User::findOrFail($request->input('id_customer'));
+            $user->saldo = 0;
+            $user->save();
 
             return response()->json([
                 "status" => true,

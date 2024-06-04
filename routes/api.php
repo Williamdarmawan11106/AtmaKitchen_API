@@ -14,6 +14,7 @@ use App\Http\Controllers\PenarikanSaldoController;
 use App\Http\Controllers\BahanBakuController;
 use App\Http\Controllers\PenggunaanBahanBakuController;
 use App\Http\Controllers\PemasukanPengeluaranController;
+use App\Http\Controllers\StatusPesananCustomerController;
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -49,3 +50,6 @@ Route::get('/bahanbaku', [BahanBakuController::class, 'index']);
 Route::get('/bahanbaku/penggunaan-bahan-baku/{tanggal_mulai}/{tanggal_selesai}', [PenggunaanBahanBakuController::class, 'laporanPenggunaanBahanBaku']);
 
 Route::get('/laporan-pemasukan-pengeluaran', [PemasukanPengeluaranController::class, 'laporanPemasukanPengeluaran']);
+
+Route::get('statuses/{id}', [StatusPesananCustomerController::class, 'getAllStatuses']);
+Route::put('complete-order/{id}', [StatusPesananCustomerController::class, 'completeOrder']);
